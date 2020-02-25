@@ -3,22 +3,34 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
+
+    public TurretBluePrint standardTurret;
+    public TurretBluePrint missileLauncher;
+    public TurretBluePrint laserBeamer;
+
     BuildManager buildManager;
 
     void Start ()
     {
         buildManager = BuildManager.instance;
     }
-    public void PurchaseStandardTurret ()
+    public void SelectStandardTurret ()
     {
         Debug.Log("Standard Turret Purchased");
-        buildManager.SetTurretToBuild(buildManager.standardTurretPreFab);
+        buildManager.SelectTurretToBuild(standardTurret);
     }
 
-    public void PurchaseMissileLauncher ()
+    public void SelectMissileLauncher ()
     {
         Debug.Log("Missile Launcher Purchased");
-        buildManager.SetTurretToBuild(buildManager.missileLauncherPreFab);
+        buildManager.SelectTurretToBuild(missileLauncher);
+
+    }
+
+    public void SelectLaserBeamer ()
+    {
+        Debug.Log("Laser Beamer Purchased");
+        buildManager.SelectTurretToBuild(laserBeamer);
 
     }
 

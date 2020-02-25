@@ -12,6 +12,12 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameManager.gameIsOver)
+        {
+            this.enabled = false;
+            return;
+        }
+
         // Prevent moving camera outside bounds using ESC key
         if (Input.GetKeyDown(KeyCode.Escape))
         doMovement = !doMovement;
