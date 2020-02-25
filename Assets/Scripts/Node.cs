@@ -10,8 +10,13 @@ public class Node : MonoBehaviour
 
     public Vector3 positionOffset;
 
-    [Header ("Optional")]
+    [HideInInspector]
     public GameObject turret;
+
+    [HideInInspector]
+    public TurretBluePrint turretBluePrint;
+    [HideInInspector]
+    public bool isUpgraded = false;
     private Renderer rend;
     private Color startColor;
 
@@ -42,10 +47,46 @@ public class Node : MonoBehaviour
         if (!buildManager.CanBuild)
         return;
 
-        buildManager.BuildTurretOn(this);
+        BuildTurret(buildManager.GetTurretToBuild());
 
 
     }
+
+    void BuildTurret (TurretBluePrint blueprint)
+    {
+        if (PlayerStats.Money < blueprint.cost)
+        {
+        Debug.Log("Not enough dosh doll");
+        return;
+        }
+        PlayerStats.Money -= blueprint.cost;
+
+        GameObject _turret = (GameObject)Instantiate(blueprint.prefab, GetBuildPosition(), Quaternion.identity);
+        turret = _turret;
+
+        turretBluePrint = blueprint;
+
+        Debug.Log("Turret built!");
+    }
+
+    public void upgradeTurret()
+    {
+        if (PlayerStats.Money < turretBluePrint.upgradeCost)
+        {
+        Debug.Log("Not enough dosh doll to upgrade");
+        return;
+        }
+        PlayerStats.Money -= turretBluePrint.upgradeCost;
+        // Removes old turret
+        Destroy(turret);
+
+        // Building upgraded turret
+        GameObject _turret = (GameObject)Instantiate(turretBluePrint.upgradedPrefab, GetBuildPosition(), Quaternion.identity);
+        turret = _turret;
+        isUpgraded = true;
+        Debug.Log("Turret upgraded!");
+    }
+
     void OnMouseEnter () 
     {
         if (EventSystem.current.IsPointerOverGameObject())

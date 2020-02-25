@@ -22,21 +22,7 @@ public class BuildManager : MonoBehaviour
     public bool CanBuild { get { return turretToBuild != null; }}
     public bool HasMoney { get { return PlayerStats.Money >= turretToBuild.cost; }}
 
-    public void BuildTurretOn(Node node)
-    {
-        if (PlayerStats.Money < turretToBuild.cost)
-        {
-        Debug.Log("Not enough dosh doll");
-        return;
-        }
-        PlayerStats.Money -= turretToBuild.cost;
 
-        GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
-        node.turret = turret;
-
-        Debug.Log("Turret built! Money left:" + PlayerStats.Money);
-    }
-    
     public void SelectNode (Node node)
     {
         if (selectedNode == node)
@@ -46,7 +32,6 @@ public class BuildManager : MonoBehaviour
         }
         selectedNode = node;
         turretToBuild = null;
-
         nodeUI.SetTarget(node);
     }
     public void DeselectNode()
@@ -60,5 +45,9 @@ public class BuildManager : MonoBehaviour
         DeselectNode();
     }
 
+    public TurretBluePrint GetTurretToBuild ()
+    {
+        return turretToBuild;
+    }
 
 }
