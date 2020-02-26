@@ -28,6 +28,8 @@ public class NodeUI : MonoBehaviour
 
         }
 
+        sellCost.text = "$" + target.turretBluePrint.sellPrice;
+
         ui.SetActive(true); 
 
 
@@ -41,6 +43,12 @@ public class NodeUI : MonoBehaviour
     public void Upgrade()
     {
         target.upgradeTurret();
+        BuildManager.instance.DeselectNode();
+    }
+
+    public void Sell ()
+    {
+        target.sellTurret();
         BuildManager.instance.DeselectNode();
     }
 }

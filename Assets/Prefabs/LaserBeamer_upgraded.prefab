@@ -4785,7 +4785,7 @@ Transform:
   m_GameObject: {fileID: 3070260051965349680}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: -0, y: 0.49525395, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0.6370336}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 3070260053479357470}
   m_RootOrder: 1
@@ -4863,7 +4863,7 @@ Transform:
   m_GameObject: {fileID: 3070260052039016779}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -0.100000024, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 3070260052312759253}
   m_RootOrder: 1
@@ -4939,7 +4939,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3070260052312759252}
   m_LocalRotation: {x: -0.50000006, y: -0.49999997, z: 0.50000006, w: 0.49999997}
-  m_LocalPosition: {x: 0, y: 1.4974536, z: 0}
+  m_LocalPosition: {x: -0, y: 2.97, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3070260053212495071}
@@ -5094,12 +5094,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  range: 20
+  range: 30
   bulletPrefab: {fileID: 0}
   fireRate: 1
   useLaser: 1
-  damageOverTime: 30
-  slowPerc: 0.5
+  damageOverTime: 40
+  slowPerc: 0.8
   lineRenderer: {fileID: 3070260053479357464}
   laserEffect: {fileID: 3070260051809891840}
   impactLight: {fileID: 0}
